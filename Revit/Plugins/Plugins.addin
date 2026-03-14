@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>My Plugins Suite</Name>
+    <Assembly>MySuperPlugin\Plugins.dll</Assembly>
+    <AddInId>a2d14c36-b368-4712-8c16-1e5f5c5b5c5b</AddInId>
+    <FullClassName>Plugins.App</FullClassName>
+    <VendorId>USER</VendorId>
+    <VendorDescription>user.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>

@@ -1,0 +1,38 @@
+## --- [ ОСНОВНОЕ ДЛЯ .NET ] ---
+[Bb]in/
+[Oo]bj/
+*.exe
+*.dll
+*.pdb
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## --- [ JETBRAINS RIDER / RESHARPER ] ---
+.idea/
+*.sln.iml
+_ReSharper.Caches/
+*.DotSettings.user
+
+## --- [ REVIT SPECIFIC ] ---
+*.log
+*.journal.*
+
+## --- [ WEBVIEW2 / FRONTEND ] ---
+**/AvalonMock/
+**/WebView2_Cache/
+**/EBWebView/
+
+## --- [ ПАКЕТЫ И ЗАВИСИМОСТИ ] ---
+packages/
+node_modules/
+.pnpm-store/
+
+## --- [ VS CODE ] ---
+.vscode/
+
+## --- [ ОС ] ---
+Thumbs.db
+Desktop.ini
+.DS_Store
