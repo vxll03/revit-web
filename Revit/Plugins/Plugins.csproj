@@ -44,12 +44,12 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="App.cs" />
-        <Compile Include="IRevitInitializable.cs" />
-        <Compile Include="Panel\MainPlugin\Command.cs" />
-        <Compile Include="Panel\MainPlugin\Handler.cs" />
-        <Compile Include="Panel\MainPlugin\Model.cs" />
-        <Compile Include="Panel\MainPlugin\PaneProvider.cs" />
+        <Compile Include="Command.cs" />
+        <Compile Include="Panel\WallCheck\WallCheckEventHandler.cs" />
+        <Compile Include="Panel\WallCheck\WallCheckModel.cs" />
+        <Compile Include="PluginFactory.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="WindowManager.cs" />
     </ItemGroup>
     <ItemGroup>
       <Content Include="Plugins.addin">
@@ -60,6 +60,7 @@
       <PackageReference Include="Autodesk.Revit.SDK" Version="2021.0.0" />
       <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.5" />
+      <PackageReference Include="Nice3point.Revit.Toolkit" Version="2021.3.0" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Core\Core.csproj">

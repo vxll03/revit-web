@@ -52,9 +52,9 @@ const message = useMessage();
 const pluginList = ref([
   {
     id: 1,
-    name: "Hello World",
+    name: "Wall Checker",
     description: "Тестовый плагин для проверки связи с Revit API.",
-    commandCode: "HelloWorld",
+    commandCode: "WallCheck",
     defaultPayload: { "test": "HelloWorld" },
     isStable: true,
   },

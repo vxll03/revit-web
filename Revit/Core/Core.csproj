@@ -41,6 +41,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Contracts\IPayload.cs" />
+        <Compile Include="Contracts\IPluginFactory.cs" />
         <Compile Include="Contracts\IRevitPluginModel.cs" />
         <Compile Include="Models\BasePayload.cs" />
         <Compile Include="Models\MessageToWeb.cs" />

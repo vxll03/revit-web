@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
@@ -18,9 +19,9 @@ namespace WebBridge.ViewModel
                 var doc = JObject.Parse(json);
                 OnCommandReceived(doc);
             }
-            catch
+            catch (Exception ex)
             {
-                // Здесь в будущем будет логгер
+                MessageBox.Show(ex.Message);
             }
         }
 
