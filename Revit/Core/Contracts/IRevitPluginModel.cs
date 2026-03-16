@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Core.Models;
 
 namespace Core.Contracts
@@ -14,6 +15,6 @@ namespace Core.Contracts
         /// <summary>
         /// Execute command from web interface
         /// </summary>
-        void Execute();
+        Task Execute();
     }
 }
