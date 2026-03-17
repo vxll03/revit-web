@@ -11,11 +11,11 @@ public abstract class BasePluginModel : IRevitPluginModel
 {
     public event Action<MessageToWeb> OnMessageReady;
     public virtual IPayload Payload { get; set; } = new BasePayload();
-    protected readonly AsyncEventHandler Handler;
+    private readonly AsyncEventHandler _handler;
     
     protected BasePluginModel(AsyncEventHandler handler)
     {
-        Handler = handler;
+        _handler = handler;
     }
     
     public async Task Execute()
@@ -32,9 +32,9 @@ public abstract class BasePluginModel : IRevitPluginModel
 
     protected abstract Task HandlePlugin();
 
-    protected async Task RunInRevitAsync(Action<UIApplication> action)
+    protected async Task RunInRevitAsync(Action<UIApplication> func)
     {
-        await Handler.RaiseAsync(action);
+            await _handler.RaiseAsync(func);
     }
 
     protected void SendToast(string title, string message)

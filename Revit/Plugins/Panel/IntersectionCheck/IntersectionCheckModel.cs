@@ -6,6 +6,7 @@ using Autodesk.Revit.UI;
 using Core.Contracts;
 using Core.Models;
 using Nice3point.Revit.Toolkit.External.Handlers;
+using Plugins.Panel.WallCheck;
 
 namespace Plugins.Panel.IntersectionCheck;
 
@@ -16,17 +17,15 @@ public class IntersectionCheckModel : BasePluginModel
     protected override async Task HandlePlugin()
     {
         SendToast("Старт", "Собираем данные модели...");
-        var exportData = new List<string>();
-
-        await RunInRevitAsync(app => 
+        List<Element> viewElements = new();
+        await RunInRevitAsync(app =>
         {
-            var doc = app.ActiveUIDocument.Document;
-
+            viewElements = WallCheckEventHandler.GetWallsFromActiveView(app);
         });
         
         SendToast("Сеть", "Отправляем данные в Бекенд");
+        await Task.Delay(2000);
         
-        var backendResponse = await SendToFastApiAsync(exportData);
 
         await RunInRevitAsync(app => 
         {

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
@@ -30,5 +31,20 @@ internal sealed class WallCheckEventHandler
         }
     }
 
-    public string GetName() => "SelectWallsHandler";
+    public static List<Element> GetWallsFromActiveView(UIApplication app)
+    {
+        var uiDoc = app.ActiveUIDocument;
+        if (uiDoc?.Document?.ActiveView == null)
+        {
+            return new List<Element>();
+        }
+
+        var doc = uiDoc.Document;
+
+        return new FilteredElementCollector(doc, doc.ActiveView.Id)
+            .OfCategory(BuiltInCategory.OST_Walls)
+            .WhereElementIsNotElementType()
+            .ToElements()
+            .ToList();
+    }
 }
