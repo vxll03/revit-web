@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using WebBridge.View;
 using WebBridge.ViewModel;
 
-namespace Plugins;
+namespace Plugins.Common;
 
 public class WindowManager
 {

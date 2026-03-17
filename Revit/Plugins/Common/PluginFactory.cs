@@ -1,9 +1,8 @@
 ﻿using System;
-using Autodesk.Revit.UI;
 using Core.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Plugins;
+namespace Plugins.Common;
 
 public class PluginFactory: IPluginFactory
 {

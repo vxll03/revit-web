@@ -70,7 +70,7 @@ const pluginList = ref([
     id: 3,
     name: "Анализ коллизий",
     description: "Поиск пересечений между архитектурой и инженерными сетями.",
-    commandCode: "RunClashDetection",
+    commandCode: "IntersectionCheck",
     defaultPayload: { tolerance: 5.0 },
     isStable: false,
   },

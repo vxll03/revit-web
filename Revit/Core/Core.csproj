@@ -40,6 +40,7 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Contracts\IApiClient.cs" />
         <Compile Include="Contracts\IPayload.cs" />
         <Compile Include="Contracts\IPluginFactory.cs" />
         <Compile Include="Contracts\IRevitPluginModel.cs" />

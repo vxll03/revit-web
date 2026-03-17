@@ -1,27 +1,16 @@
-﻿using System;
-using Autodesk.Revit.UI;
-using Core.Contracts;
-using Core.Models;
+﻿using System.Threading.Tasks;
 using Nice3point.Revit.Toolkit.External.Handlers;
+using Plugins.Common;
 
 namespace Plugins.Panel.WallCheck;
 
-public class WallCheckModel : IRevitPluginModel
-{
-    public event Action<MessageToWeb> OnMessageReady;
-    public IPayload Payload { get; set; } = new BasePayload();
-    private readonly ActionEventHandler _handler;
-
-    public WallCheckModel(ActionEventHandler handler)
+public class WallCheckModel : BasePluginModel
+{ 
+    public WallCheckModel(AsyncEventHandler handler) : base(handler) { }
+    
+    protected override async Task HandlePlugin()
     {
-        _handler = handler;
-    }
-
-    public void Execute()
-    {
-        _handler.Raise(WallCheckEventHandler.CheckWalls);
-
-        var msg = new MessageToWeb("Плагин выполнен", "Проблем не было 💩");
-        OnMessageReady?.Invoke(msg);
+        await RunInRevitAsync(WallCheckEventHandler.CheckWalls);
+        SendToast("Плагин выполнен", "Ошибок не найдено");
     }
 }

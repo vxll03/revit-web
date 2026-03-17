@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using Autodesk.Revit.Attributes;
-using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
 using Core.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 using Nice3point.Revit.Toolkit.External;
 using Nice3point.Revit.Toolkit.External.Handlers;
+using Plugins.Common;
+using Plugins.Panel.IntersectionCheck;
 using Plugins.Panel.WallCheck;
 using WebBridge.ViewModel;
 
@@ -26,7 +25,7 @@ public class Command : ExternalCommand
     {
         _serviceProvider ??= BuildDi();
         
-        _serviceProvider.GetRequiredService<ActionEventHandler>();
+        _serviceProvider.GetRequiredService<AsyncEventHandler>();
         
         var windowManager = _serviceProvider.GetRequiredService<WindowManager>();
         windowManager.ShowOrActivate();
@@ -38,7 +37,7 @@ public class Command : ExternalCommand
 
         // Revit context init
         services.AddSingleton(Application);
-        services.AddSingleton<ActionEventHandler>();
+        services.AddSingleton<AsyncEventHandler>();
         
         // ViewModel & View init
         services.AddTransient<MainViewModel>();
@@ -47,6 +46,7 @@ public class Command : ExternalCommand
         // Plugins init
         services.AddSingleton<IPluginFactory, PluginFactory>();
         services.AddKeyedTransient<IRevitPluginModel, WallCheckModel>("WallCheck");
+        services.AddKeyedTransient<IRevitPluginModel, IntersectionCheckModel>("IntersectionCheck");
         
         return services.BuildServiceProvider();
     }
